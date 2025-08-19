@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Finance Manager · Investments</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header class="navbar">
+    <div class="brand">💼 Finance Manager</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="expenses.html">Expenses</a>
+      <a class="active" href="investment.html">Investments</a>
+      <a href="reports.html">Reports</a>
+    </nav>
+    <button id="themeToggle" class="ghost">🌓</button>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>Investment Planner</h2>
+      <div class="grid three">
+        <div class="stat">
+          <div class="label">Salary</div>
+          <div id="invSalary" class="value">₹0</div>
+        </div>
+        <div class="stat">
+          <div class="label">This Month’s Expenses</div>
+          <div id="invExpenses" class="value danger">₹0</div>
+        </div>
+        <div class="stat">
+          <div class="label">Potential to Invest</div>
+          <div id="invPotential" class="value success">₹0</div>
+        </div>
+      </div>
+
+      <div class="grid mt16">
+        <div>
+          <label>Risk Preference</label>
+          <select id="riskSelect">
+            <option value="low">Low (Capital Protection)</option>
+            <option value="moderate" selected>Moderate (Balanced)</option>
+            <option value="high">High (Growth)</option>
+          </select>
+        </div>
+        <div class="align-end">
+          <button id="genPlanBtn">Generate Plan</button>
+        </div>
+      </div>
+
+      <div id="invPlan" class="plan mt12"></div>
+      <canvas id="invChart" height="200" class="mt16"></canvas>
+    </section>
+
+    <section class="card">
+      <h2>Guidance</h2>
+      <ul class="bullets">
+        <li>Keep 3–6 months expenses as an emergency fund (liquid).</li>
+        <li>Automate monthly investments (SIP) on salary day.</li>
+        <li>Diversify across equity, debt, and gold based on risk.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="footer">© 2025 Finance Manager</footer>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</body>
+</html>

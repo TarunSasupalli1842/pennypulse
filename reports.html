@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Finance Manager · Reports</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header class="navbar">
+    <div class="brand">💼 Finance Manager</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="expenses.html">Expenses</a>
+      <a href="investment.html">Investments</a>
+      <a class="active" href="reports.html">Reports</a>
+    </nav>
+    <button id="themeToggle" class="ghost">🌓</button>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>Monthly Overview (Last 6 Months)</h2>
+      <canvas id="monthBar" height="220"></canvas>
+    </section>
+
+    <section class="card">
+      <h2>Category Trend (This Year)</h2>
+      <canvas id="catLine" height="220"></canvas>
+    </section>
+  </main>
+
+  <footer class="footer">© 2025 Finance Manager</footer>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</body>
+</html>

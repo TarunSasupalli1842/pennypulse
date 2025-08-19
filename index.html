@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Finance Manager · Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header class="navbar">
+    <div class="brand">💼 Finance Manager</div>
+    <nav>
+      <a class="active" href="index.html">Home</a>
+      <a href="expenses.html">Expenses</a>
+      <a href="investment.html">Investments</a>
+      <a href="reports.html">Reports</a>
+    </nav>
+    <button id="themeToggle" class="ghost">🌓</button>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>Salary & Budget</h2>
+      <div class="grid">
+        <div>
+          <label>Monthly Salary (₹)</label>
+          <input id="salaryInput" type="number" min="0" placeholder="e.g., 50000" />
+          <button id="saveSalaryBtn">Save Salary</button>
+          <p id="salarySavedMsg" class="muted"></p>
+        </div>
+        <div>
+          <h3 class="mb8">Recommended Split (50/30/20)</h3>
+          <ul id="salarySplit" class="bullets"></ul>
+          <canvas id="salaryChart" height="200"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Quick Summary (This Month)</h2>
+      <div class="grid three">
+        <div class="stat">
+          <div class="label">Salary</div>
+          <div class="value" id="sumSalary">₹0</div>
+        </div>
+        <div class="stat">
+          <div class="label">Expenses</div>
+          <div class="value danger" id="sumExpenses">₹0</div>
+        </div>
+        <div class="stat">
+          <div class="label">Savings (Est.)</div>
+          <div class="value success" id="sumSavings">₹0</div>
+        </div>
+      </div>
+      <div class="mt12">
+        <progress id="spendProgress" max="100" value="0"></progress>
+        <div class="muted" id="spendProgressText">0% of salary spent</div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">© 2025 Finance Manager</footer>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</body>
+</html>
