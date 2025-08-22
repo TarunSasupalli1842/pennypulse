@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Finance Manager · Expenses</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+  <!-- PapaParse -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header class="navbar">
+    <div class="brand">💼 Finance Manager</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a class="active" href="expenses.html">Expenses</a>
+      <a href="investment.html">Investments</a>
+      <a href="reports.html">Reports</a>
+    </nav>
+    <button id="themeToggle" class="ghost">🌓</button>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>Add Expense</h2>
+      <div class="grid">
+        <div>
+          <label>Amount (₹)</label>
+          <input id="expAmount" type="number" min="1" placeholder="e.g., 300" />
+        </div>
+        <div>
+          <label>Category</label>
+          <select id="expCategory"></select>
+        </div>
+        <div>
+          <label>Date</label>
+          <input id="expDate" type="date" />
+        </div>
+      </div>
+
+      <div class="grid">
+        <div>
+          <label>Notes (optional)</label>
+          <input id="expNote" type="text" placeholder="e.g., groceries / cab" />
+        </div>
+        <div class="align-end">
+          <button id="addExpenseBtn">Add Expense</button>
+        </div>
+      </div>
+
+      <div class="csv-row grid two mt12">
+        <div>
+          <button id="exportCsvBtn" class="ghost">⬇️ Export Expenses (CSV)</button>
+        </div>
+        <div style="display:flex;gap:10px;align-items:center;">
+          <label for="importCsvInput" class="muted">Import CSV</label>
+          <input id="importCsvInput" type="file" accept=".csv" />
+          <button id="importCsvBtn" class="ghost">Import</button>
+        </div>
+      </div>
+
+      <p class="muted" style="margin-top:8px; font-size:.9rem;">
+        CSV format: <code>date,category,amount,note</code> — date as <em>YYYY-MM-DD</em> or ISO date.<br>
+        Example: <code>2025-08-20,Food,250,groceries</code>
+      </p>
+
+      <div id="alerts" class="alerts mt12"></div>
+    </section>
+
+    <section class="card">
+      <h2>Summary</h2>
+      <div class="grid three">
+        <div class="stat">
+          <div class="label">Today</div>
+          <div class="value" id="sumDay">₹0</div>
+        </div>
+        <div class="stat">
+          <div class="label">This Week</div>
+          <div class="value" id="sumWeek">₹0</div>
+        </div>
+        <div class="stat">
+          <div class="label">This Month</div>
+          <div class="value" id="sumMonth">₹0</div>
+        </div>
+      </div>
+      <h3 class="mt16">By Category (This Month)</h3>
+      <canvas id="catChart" height="220"></canvas>
+    </section>
+
+    <section class="card">
+      <h2>History</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th><th>Category</th><th>Note</th><th>Amount</th><th></th>
+            </tr>
+          </thead>
+          <tbody id="expTable"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Category Budgets (Monthly Caps)</h2>
+      <p class="muted">Set soft limits to get friendly warnings when you overspend.</p>
+      <div id="budgetsGrid" class="grid two"></div>
+      <div class="align-end mt12">
+        <button id="saveBudgetsBtn">Save Budgets</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">© 2025 Finance Manager</footer>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</body>
+</html>
